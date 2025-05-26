@@ -40,13 +40,18 @@ pip install -r requirements.txt
 ### 3. Configure MySQL
 
 * Install MySQL and create a database named `task_db`.
-* Update `src/config.py` with your MySQL credentials:
+* Copy  `env.example` to `.env`:
 
 ```python
 SQLALCHEMY_DATABASE_URL = "mysql+mysqlconnector://your_username:your_password@localhost:3306/task_db"
 ```
+### 4. RUN Migrations
+* Run migrations with the following command
+```
+alembic revision --autogenerate -m "Initial migration: create users and posts tables"
+```
 
-### 4. Run the Application
+### 5. Run the Application
 
 ```bash
 uvicorn src.main:app --host 0.0.0.0 --port 8000
